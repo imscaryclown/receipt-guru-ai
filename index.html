@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Receipt Guru AI - Smart Receipt & Invoice Snapshot Auditor. AI-powered expense extraction, automatic categorization, duplicate detection, and financial anomaly auditing.">
+    <meta name="keywords"
+        content="Receipt Guru AI, expense auditor, OCR invoice scanner, Gemini Vision, Tesseract OCR, duplicate detection, anomaly detection, Cyrus Hackathon 2026">
+    <meta name="author" content="Team TECH TITANS">
+    <title>Receipt Guru AI — Smart Receipt & Invoice Snapshot Auditor</title>
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet (Ready for CSS styling phase) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== -->
+    <header class="app-header" id="appHeader">
+        <div class="header-container">
+            <!-- Brand Logo & Title -->
+            <div class="brand-group">
+                <a href="#dashboard" class="brand-logo" id="brandLogo">
+                    <span class="brand-icon" aria-hidden="true">🧾</span>
+                    <div class="brand-text">
+                        <span class="brand-name">Receipt Guru <span class="brand-ai">AI</span></span>
+                        <span class="brand-tagline">Snapshot Auditor</span>
+                    </div>
+                </a>
+                <span class="badge badge-hackathon" id="hackathonBadge">CHH 2026</span>
+            </div>
+
+            <!-- Main Navigation Links -->
+            <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" id="navDashboard">
+                            <span class="nav-icon">📊</span> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#scanner" class="nav-link" id="navScanner">
+                            <span class="nav-icon">📷</span> Scan & Extract
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#alerts" class="nav-link" id="navAlerts">
+                            <span class="nav-icon">🚨</span> Risk & Anomalies
+                            <span class="badge badge-pill badge-warning" id="alertCountBadge">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#transactions" class="nav-link" id="navTransactions">
+                            <span class="nav-icon">📑</span> Expense Ledger
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#workflow" class="nav-link" id="navWorkflow">
+                            <span class="nav-icon">⚙️</span> How It Works
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#team" class="nav-link" id="navTeam">
+                            <span class="nav-icon">👥</span> Team
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Header Actions / System Status -->
+            <div class="header-actions">
+                <div class="system-status" id="systemStatus" title="AI Vision & OCR Engine Status">
+                    <span class="status-dot status-online"></span>
+                    <span class="status-label">AI Engine Active</span>
+                </div>
+                <button type="button" class="btn btn-secondary btn-icon-only" id="themeToggleBtn"
+                    aria-label="Toggle Dark/Light Mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <a href="#scanner" class="btn btn-primary btn-upload-cta" id="quickUploadCta">
+                    <span class="btn-icon">⚡</span> Quick Audit
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       HERO BANNER & VALUE PROPOSITION
+       ========================================================================== -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge-row">
+                    <span class="badge badge-pill badge-accent">🚀 FinTech & Vision Automation Track</span>
+                    <span class="hero-meta">CYRUS HACK-A-THON 2026</span>
+                </div>
+                <h1 class="hero-title" id="heroTitle">
+                    From Phone Snapshot to <span class="gradient-text">Trustworthy Expense Intelligence</span>.
+                </h1>
+                <p class="hero-subtitle">
+                    Transform receipt & invoice snapshots into structured, reviewable financial records.
+                    Detect duplicate charges, pinpoint high-value anomalies, and automate expense categorization in
+                    seconds.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#scanner" class="btn btn-primary btn-lg" id="heroStartScanBtn">
+                        <span class="btn-icon">📸</span> Upload Receipt Snapshot
+                    </a>
+                    <a href="#workflow" class="btn btn-outline btn-lg" id="heroExploreWorkflowBtn">
+                        <span class="btn-icon">🔍</span> Explore Architecture
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Philosophy Mini Bar -->
+            <aside class="philosophy-strip" aria-label="Project Philosophy">
+                <div class="philosophy-step">
+                    <span class="step-badge">1</span>
+                    <span class="step-label">SNAPSHOT</span>
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="philosophy-step">
+                    <span class="step-badge">2</span>
+                    <span class="step-label">STRUCTURE</span>
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="philosophy-step">
+                    <span class="step-badge">3</span>
+                    <span class="step-label">SIGNAL</span>
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="philosophy-step">
+                    <span class="step-badge">4</span>
+                    <span class="step-label">ACTION</span>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+    <main class="main-content" id="mainContent">
+
+        <!-- ======================================================================
+           SECTION 1: DASHBOARD OVERVIEW & METRIC CARDS
+           ====================================================================== -->
+        <section class="dashboard-metrics-section" id="dashboard" aria-labelledby="dashboardHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" id="dashboardHeading">Financial Pulse & Audit Overview</h2>
+                    <p class="section-subtitle">Real-time aggregate data, review signals, and anomaly metrics.</p>
+                </div>
+                <div class="dashboard-actions">
+                    <label for="timeRangeSelect" class="sr-only">Time Range Filter</label>
+                    <select id="timeRangeSelect" class="form-select select-compact">
+                        <option value="month" selected>This Month (October 2026)</option>
+                        <option value="quarter">Q4 2026</option>
+                        <option value="year">Full Year 2026</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- KPI Metric Cards Grid -->
+            <div class="metrics-grid">
+                <!-- Card 1: Total Audited Expenses -->
+                <article class="metric-card metric-card-primary" id="kpiTotalExpense">
+                    <div class="metric-card-header">
+                        <span class="metric-icon">💰</span>
+                        <span class="metric-badge trend-up">+14.2% vs last mo</span>
+                    </div>
+                    <div class="metric-card-body">
+                        <span class="metric-label">Total Audited Spend</span>
+                        <h3 class="metric-value" id="kpiExpenseValue">₹48,920.50</h3>
+                    </div>
+                    <div class="metric-card-footer">
+                        <span class="metric-footnote">Across 38 verified receipts</span>
+                    </div>
+                </article>
+
+                <!-- Card 2: Receipts Processed -->
+                <article class="metric-card metric-card-info" id="kpiProcessedReceipts">
+                    <div class="metric-card-header">
+                        <span class="metric-icon">🧾</span>
+                        <span class="metric-badge badge-neutral">98.4% Accuracy</span>
+                    </div>
+                    <div class="metric-card-body">
+                        <span class="metric-label">Processed Snapshots</span>
+                        <h3 class="metric-value" id="kpiReceiptsCount">42</h3>
+                    </div>
+                    <div class="metric-card-footer">
+                        <span class="metric-footnote">Gemini Vision + Tesseract.js</span>
+                    </div>
+                </article>
+
+                <!-- Card 3: Duplicate Flags -->
+                <article class="metric-card metric-card-warning" id="kpiDuplicates">
+                    <div class="metric-card-header">
+                        <span class="metric-icon">♻️</span>
+                        <span class="metric-badge badge-warning">Needs Review</span>
+                    </div>
+                    <div class="metric-card-body">
+                        <span class="metric-label">Duplicate Charges Flagged</span>
+                        <h3 class="metric-value" id="kpiDuplicateCount">2 <span class="metric-unit">Receipts</span></h3>
+                    </div>
+                    <div class="metric-card-footer">
+                        <span class="metric-footnote">₹1,785.00 potential overclaim</span>
+                    </div>
+                </article>
+
+                <!-- Card 4: Anomalies & Spikes -->
+                <article class="metric-card metric-card-danger" id="kpiAnomalies">
+                    <div class="metric-card-header">
+                        <span class="metric-icon">🚨</span>
+                        <span class="metric-badge badge-danger">High Risk</span>
+                    </div>
+                    <div class="metric-card-body">
+                        <span class="metric-label">High-Value / Spikes</span>
+                        <h3 class="metric-value" id="kpiAnomalyCount">1 <span class="metric-unit">Anomaly</span></h3>
+                    </div>
+                    <div class="metric-card-footer">
+                        <span class="metric-footnote">Exceeds 3x category average</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 2: RECEIPT SCANNER & OCR FIELD EXTRACTOR (CORE WORKFLOW)
+           ====================================================================== -->
+        <section class="scanner-section" id="scanner" aria-labelledby="scannerHeading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">Core OCR Engine</span>
+                    <h2 class="section-title" id="scannerHeading">Instant OCR & AI Image Parser</h2>
+                    <p class="section-subtitle">
+                        Upload or snap a receipt. Gemini Vision and Tesseract OCR extract merchant, date, tax, and
+                        amounts automatically.
+                    </p>
+                </div>
+                <div class="preset-sample-group">
+                    <span class="preset-label">Try Hackathon Demos:</span>
+                    <button type="button" class="btn btn-sm btn-ghost" id="sampleGroceryBtn" data-sample="supermarket">
+                        🥗 Supermarket
+                    </button>
+                    <button type="button" class="btn btn-sm btn-ghost" id="sampleTravelBtn" data-sample="flight">
+                        ✈️ Travel / Flight
+                    </button>
+                    <button type="button" class="btn btn-sm btn-ghost" id="sampleDuplicateBtn" data-sample="duplicate">
+                        ♻️ Duplicate Test
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two-Column Workbench: Upload & Extracted Review Form -->
+            <div class="scanner-workbench">
+
+                <!-- Left Column: Dropzone & Image Preview -->
+                <div class="workbench-upload-card" id="uploadCard">
+                    <div class="dropzone" id="receiptDropzone" tabindex="0" role="region"
+                        aria-label="Receipt Image Upload Dropzone">
+                        <input type="file" id="receiptFileInput" class="file-input-hidden"
+                            accept="image/png, image/jpeg, image/webp, image/heic, .pdf">
+
+                        <div class="dropzone-empty-state" id="dropzoneEmptyState">
+                            <div class="upload-illustration" aria-hidden="true">
+                                <span class="upload-icon">📸</span>
+                            </div>
+                            <h3 class="dropzone-title">Drag & drop receipt snapshot here</h3>
+                            <p class="dropzone-text">or <span class="link-styled">browse from device</span> / take photo
+                            </p>
+                            <div class="dropzone-formats">
+                                <span>PNG, JPG, WEBP, PDF up to 15MB</span>
+                            </div>
+                        </div>
+
+                        <!-- Uploaded Preview State (Initially Hidden or Mocked) -->
+                        <div class="dropzone-preview-state hidden" id="dropzonePreviewState">
+                            <figure class="preview-figure">
+                                <img src="" alt="Uploaded receipt preview" id="receiptPreviewImg" class="preview-img">
+                                <figcaption class="preview-caption">
+                                    <span id="previewFileName">receipt_abc_supermarket.jpg</span>
+                                    <span id="previewFileSize" class="preview-size">1.4 MB</span>
+                                </figcaption>
+                            </figure>
+                            <div class="preview-overlay-actions">
+                                <button type="button" class="btn btn-sm btn-light" id="changeImageBtn">Change
+                                    Image</button>
+                                <button type="button" class="btn btn-sm btn-danger" id="removeImageBtn">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scan Engine Status & Processing Progress -->
+                    <div class="ocr-status-panel" id="ocrStatusPanel">
+                        <div class="status-row">
+                            <span class="status-indicator">
+                                <span class="pulse-dot"></span>
+                                <span id="ocrStatusText">Ready for processing</span>
+                            </span>
+                            <span class="confidence-badge" id="aiConfidenceBadge">Confidence: 99.2%</span>
+                        </div>
+
+                        <!-- Progress Bar (Visible during scanning) -->
+                        <div class="progress-bar-container" id="progressBarContainer" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+                        </div>
+
+                        <!-- Processing Pipeline Badges -->
+                        <div class="pipeline-tags">
+                            <span class="pipeline-tag active" id="pipelineOcrTag">1. Tesseract OCR</span>
+                            <span class="pipeline-tag active" id="pipelineGeminiTag">2. Gemini Vision Parser</span>
+                            <span class="pipeline-tag active" id="pipelineClassifierTag">3. Auto Classifier</span>
+                            <span class="pipeline-tag active" id="pipelineAuditorTag">4. Anomaly Check</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Extracted Structured Data Form -->
+                <div class="workbench-form-card" id="formCard">
+                    <div class="form-card-header">
+                        <div>
+                            <h3 class="form-title">AI Extracted Structured Data</h3>
+                            <p class="form-subtitle">Review, edit, or confirm extracted fields before recording to the
+                                ledger.</p>
+                        </div>
+                        <span class="badge badge-success" id="extractionStatusBadge">Verified Parsed</span>
+                    </div>
+
+                    <form id="receiptExtractionForm" class="extraction-form" novalidate>
+                        <!-- Form Row 1: Merchant & Date -->
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="merchantNameInput" class="form-label">
+                                    🏪 Merchant / Store Name <span class="required-star">*</span>
+                                </label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="merchantNameInput" class="form-input"
+                                        placeholder="e.g. ABC SUPERMARKET" value="ABC SUPERMARKET" required>
+                                    <span class="input-status-icon">✓</span>
+                                </div>
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="receiptDateInput" class="form-label">
+                                    📅 Transaction Date <span class="required-star">*</span>
+                                </label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="receiptDateInput" class="form-input" value="2026-10-07"
+                                        required>
+                                    <span class="input-status-icon">✓</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Row 2: Total Amount & Tax Details -->
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="totalAmountInput" class="form-label">
+                                    💰 Total Amount (₹) <span class="required-star">*</span>
+                                </label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">₹</span>
+                                    <input type="number" id="totalAmountInput" class="form-input" step="0.01" min="0"
+                                        placeholder="0.00" value="892.50" required>
+                                </div>
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="taxAmountInput" class="form-label">
+                                    🧾 Tax / GST Amount (₹)
+                                </label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">₹</span>
+                                    <input type="number" id="taxAmountInput" class="form-input" step="0.01" min="0"
+                                        placeholder="0.00" value="42.50">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Row 3: Subtotal & Auto Categorization -->
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="subtotalAmountInput" class="form-label">
+                                    Subtotal (₹)
+                                </label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">₹</span>
+                                    <input type="number" id="subtotalAmountInput" class="form-input" step="0.01" min="0"
+                                        placeholder="0.00" value="850.00">
+                                </div>
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="expenseCategorySelect" class="form-label">
+                                    🗂️ Expense Category (AI Assigned) <span class="required-star">*</span>
+                                </label>
+                                <select id="expenseCategorySelect" class="form-select" required>
+                                    <option value="Food" selected>🍔 Food & Groceries</option>
+                                    <option value="Travel">✈️ Travel & Commute</option>
+                                    <option value="Supplies">📦 Office & Store Supplies</option>
+                                    <option value="Utilities">💡 Utilities & Bills</option>
+                                    <option value="Electronics">💻 Tech & Electronics</option>
+                                    <option value="Other">🏷️ Other Miscellaneous</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Live Audit Signals & Risk Verification Banner -->
+                        <div class="audit-signals-box" id="formAuditSignals">
+                            <div class="signal-item clean-signal" id="signalDuplicateCheck">
+                                <span class="signal-icon">✓</span>
+                                <div class="signal-desc">
+                                    <strong>Duplicate Check:</strong>
+                                    <span>No previous receipt matches this merchant & total amount.</span>
+                                </div>
+                            </div>
+                            <div class="signal-item clean-signal" id="signalAnomalyCheck">
+                                <span class="signal-icon">✓</span>
+                                <div class="signal-desc">
+                                    <strong>Anomaly Detection:</strong>
+                                    <span>Amount (₹892.50) is within expected Food category boundaries.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions-row">
+                            <button type="submit" class="btn btn-primary btn-submit" id="saveExpenseBtn">
+                                <span class="btn-icon">💾</span> Confirm & Add to Ledger
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="rescanReceiptBtn">
+                                <span class="btn-icon">🔄</span> Re-parse with Gemini
+                            </button>
+                            <button type="reset" class="btn btn-outline" id="clearFormBtn">
+                                Discard
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 3: ANOMALY & DUPLICATE DETECTION ALERTS BANNER
+           ====================================================================== -->
+        <section class="alerts-section" id="alerts" aria-labelledby="alertsHeading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">Automated Risk Auditing</span>
+                    <h2 class="section-title" id="alertsHeading">Flagged Transactions & Duplicates</h2>
+                    <p class="section-subtitle">
+                        Smart heuristics and statistical thresholds catch suspicious transactions before they impact
+                        books.
+                    </p>
+                </div>
+                <div class="alerts-filter-tabs">
+                    <button type="button" class="filter-tab active" data-filter="all">All Flags (3)</button>
+                    <button type="button" class="filter-tab" data-filter="duplicate">Duplicates (2)</button>
+                    <button type="button" class="filter-tab" data-filter="anomaly">Anomalies (1)</button>
+                </div>
+            </div>
+
+            <div class="alerts-list" id="alertsList">
+
+                <!-- Alert Card 1: Duplicate Found -->
+                <article class="alert-card alert-warning" id="alertDuplicate1">
+                    <div class="alert-icon-col">
+                        <span class="alert-icon">♻️</span>
+                    </div>
+                    <div class="alert-content-col">
+                        <div class="alert-header">
+                            <span class="badge badge-warning">Duplicate Detected</span>
+                            <span class="alert-timestamp">Flagged today at 09:14 AM</span>
+                        </div>
+                        <h4 class="alert-title">Potential Repeated Receipt: "Cafe Coffee Day"</h4>
+                        <p class="alert-description">
+                            A receipt for <strong>₹450.00</strong> on <strong>06/10/2026</strong> matches an earlier
+                            submission with identical merchant name, exact timestamp, and total invoice charge.
+                        </p>
+                        <div class="alert-meta-details">
+                            <span class="meta-item"><strong>Original Receipt:</strong> #REC-1082</span>
+                            <span class="meta-item"><strong>Duplicate Upload:</strong> #REC-1094</span>
+                            <span class="meta-item"><strong>Match Confidence:</strong> 99.8%</span>
+                        </div>
+                    </div>
+                    <div class="alert-actions-col">
+                        <button type="button" class="btn btn-sm btn-outline" id="btnCompareDuplicate1">
+                            🔍 Compare Images
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger" id="btnRejectDuplicate1">
+                            🗑️ Reject Duplicate
+                        </button>
+                        <button type="button" class="btn btn-sm btn-ghost" id="btnDismissDuplicate1">
+                            Ignore
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Alert Card 2: High Value Anomaly -->
+                <article class="alert-card alert-danger" id="alertAnomaly1">
+                    <div class="alert-icon-col">
+                        <span class="alert-icon">🚨</span>
+                    </div>
+                    <div class="alert-content-col">
+                        <div class="alert-header">
+                            <span class="badge badge-danger">Unusual High Charge</span>
+                            <span class="alert-timestamp">Flagged 05/10/2026</span>
+                        </div>
+                        <h4 class="alert-title">Spike in "Tech & Electronics": "Reliance Digital"</h4>
+                        <p class="alert-description">
+                            Transaction of <strong>₹28,500.00</strong> is <strong>410% higher</strong> than standard
+                            monthly category average (₹5,500.00). Requires supervisor sign-off.
+                        </p>
+                        <div class="alert-meta-details">
+                            <span class="meta-item"><strong>Receipt:</strong> #REC-1049</span>
+                            <span class="meta-item"><strong>Category:</strong> Tech & Electronics</span>
+                            <span class="meta-item"><strong>Z-Score:</strong> +3.82</span>
+                        </div>
+                    </div>
+                    <div class="alert-actions-col">
+                        <button type="button" class="btn btn-sm btn-primary" id="btnReviewAnomaly1">
+                            🔎 Inspect Line Items
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline" id="btnApproveAnomaly1">
+                            ✓ Approve Exception
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Alert Card 3: Second Duplicate -->
+                <article class="alert-card alert-warning" id="alertDuplicate2">
+                    <div class="alert-icon-col">
+                        <span class="alert-icon">♻️</span>
+                    </div>
+                    <div class="alert-content-col">
+                        <div class="alert-header">
+                            <span class="badge badge-warning">Repeated Claim</span>
+                            <span class="alert-timestamp">Flagged 03/10/2026</span>
+                        </div>
+                        <h4 class="alert-title">Recurring Fuel Bill: "HP Auto Care"</h4>
+                        <p class="alert-description">
+                            Identical slip amount <strong>₹1,335.00</strong> detected within 24 hours under "Travel &
+                            Commute".
+                        </p>
+                    </div>
+                    <div class="alert-actions-col">
+                        <button type="button" class="btn btn-sm btn-outline" id="btnCompareDuplicate2">
+                            Compare
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger" id="btnRejectDuplicate2">
+                            Reject
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 4: FINANCIAL VISUALIZATION & CHARTS
+           ====================================================================== -->
+        <section class="charts-section" id="analytics" aria-labelledby="analyticsHeading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">Interactive Intelligence</span>
+                    <h2 class="section-title" id="analyticsHeading">Expense Analytics & Breakdown</h2>
+                    <p class="section-subtitle">Visual summaries powered by Chart.js for rapid expense auditing.</p>
+                </div>
+                <div class="chart-controls">
+                    <button type="button" class="btn btn-sm btn-secondary" id="exportChartDataBtn">
+                        📥 Export Report
+                    </button>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <!-- Chart 1: Category Distribution Doughnut -->
+                <div class="chart-card" id="categoryChartCard">
+                    <div class="chart-card-header">
+                        <div>
+                            <h3 class="chart-title">Spending by Category</h3>
+                            <span class="chart-subtitle">Distribution across 5 standard classifications</span>
+                        </div>
+                        <span class="badge badge-neutral">Doughnut</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="categoryDistributionCanvas" width="400" height="280" role="img"
+                            aria-label="Category Distribution Doughnut Chart"></canvas>
+                    </div>
+                    <div class="chart-legend-custom" id="categoryLegend">
+                        <span class="legend-pill"><span class="legend-color-dot color-food"></span> Food (28%)</span>
+                        <span class="legend-pill"><span class="legend-color-dot color-travel"></span> Travel
+                            (22%)</span>
+                        <span class="legend-pill"><span class="legend-color-dot color-supplies"></span> Supplies
+                            (18%)</span>
+                        <span class="legend-pill"><span class="legend-color-dot color-tech"></span> Electronics
+                            (25%)</span>
+                        <span class="legend-pill"><span class="legend-color-dot color-other"></span> Other (7%)</span>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Timeline Spending Trend Bar / Line -->
+                <div class="chart-card" id="timelineChartCard">
+                    <div class="chart-card-header">
+                        <div>
+                            <h3 class="chart-title">Weekly Expense Trend & Anomaly Baseline</h3>
+                            <span class="chart-subtitle">Expenditures over the last 4 weeks with threshold alert</span>
+                        </div>
+                        <span class="badge badge-neutral">Weekly Flow</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="expenseTimelineCanvas" width="500" height="280" role="img"
+                            aria-label="Weekly Expense Trend Line Chart"></canvas>
+                    </div>
+                    <div class="chart-footer-note">
+                        <span class="threshold-indicator">── Red Line: Anomaly Alert Baseline (₹12,000 / week)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 5: EXPENSE LEDGER & TRANSACTION HISTORY TABLE
+           ====================================================================== -->
+        <section class="ledger-section" id="transactions" aria-labelledby="ledgerHeading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">Structured Ledger</span>
+                    <h2 class="section-title" id="ledgerHeading">Verified Transactions & Audit History</h2>
+                    <p class="section-subtitle">
+                        Filter, search, inspect source receipt images, and export clean accounting records.
+                    </p>
+                </div>
+                <div class="table-toolbar">
+                    <!-- Search Input -->
+                    <div class="search-box">
+                        <span class="search-icon" aria-hidden="true">🔍</span>
+                        <input type="search" id="tableSearchInput" class="form-input input-search"
+                            placeholder="Search merchant, ID, or amount...">
+                    </div>
+
+                    <!-- Category Filter -->
+                    <select id="tableCategoryFilter" class="form-select select-compact">
+                        <option value="all">All Categories</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Supplies">Supplies</option>
+                        <option value="Electronics">Electronics</option>
+                    </select>
+
+                    <!-- Audit Signal Filter -->
+                    <select id="tableAuditStatusFilter" class="form-select select-compact">
+                        <option value="all">All Audit Statuses</option>
+                        <option value="clean">Verified Only</option>
+                        <option value="duplicate">Duplicate Flags</option>
+                        <option value="anomaly">Anomaly Spikes</option>
+                    </select>
+
+                    <!-- Export Button -->
+                    <button type="button" class="btn btn-outline btn-sm" id="exportCsvBtn">
+                        📊 Export CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Responsive Table Wrapper -->
+            <div class="table-responsive">
+                <table class="data-table" id="expenseTable" aria-label="Audited Receipts Table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="th-checkbox">
+                                <input type="checkbox" id="selectAllCheckbox" aria-label="Select all rows">
+                            </th>
+                            <th scope="col" class="th-id">Receipt ID</th>
+                            <th scope="col" class="th-date">Date</th>
+                            <th scope="col" class="th-merchant">Merchant / Store</th>
+                            <th scope="col" class="th-category">Category</th>
+                            <th scope="col" class="th-tax">Tax (₹)</th>
+                            <th scope="col" class="th-amount">Amount (₹)</th>
+                            <th scope="col" class="th-signal">Audit Signal</th>
+                            <th scope="col" class="th-actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenseTableBody">
+                        <!-- Row 1: Example from README (ABC Supermarket) -->
+                        <tr class="table-row verified-row" id="row-rec-1001">
+                            <td>
+                                <input type="checkbox" class="row-checkbox" aria-label="Select transaction 1001">
+                            </td>
+                            <td class="font-mono text-muted">#REC-1001</td>
+                            <td>07/10/2026</td>
+                            <td>
+                                <div class="merchant-cell">
+                                    <span class="merchant-name">ABC SUPERMARKET</span>
+                                    <span class="merchant-sub">Grocery Store</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-category category-food">🍔 Food</span>
+                            </td>
+                            <td class="text-right font-mono">₹42.50</td>
+                            <td class="text-right font-mono font-bold">₹892.50</td>
+                            <td>
+                                <span class="badge badge-status badge-verified">
+                                    <span class="status-indicator-dot"></span> Clean
+                                </span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <button type="button" class="btn btn-icon-sm" title="View Source Receipt"
+                                        data-action="view" data-id="1001">👁️</button>
+                                    <button type="button" class="btn btn-icon-sm" title="Edit Entry" data-action="edit"
+                                        data-id="1001">✏️</button>
+                                    <button type="button" class="btn btn-icon-sm btn-delete" title="Delete Entry"
+                                        data-action="delete" data-id="1001">🗑️</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Travel Expense -->
+                        <tr class="table-row verified-row" id="row-rec-1002">
+                            <td>
+                                <input type="checkbox" class="row-checkbox" aria-label="Select transaction 1002">
+                            </td>
+                            <td class="font-mono text-muted">#REC-1002</td>
+                            <td>06/10/2026</td>
+                            <td>
+                                <div class="merchant-cell">
+                                    <span class="merchant-name">IndiGo Airlines</span>
+                                    <span class="merchant-sub">Flight Invoice</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-category category-travel">✈️ Travel</span>
+                            </td>
+                            <td class="text-right font-mono">₹850.00</td>
+                            <td class="text-right font-mono font-bold">₹7,450.00</td>
+                            <td>
+                                <span class="badge badge-status badge-verified">
+                                    <span class="status-indicator-dot"></span> Clean
+                                </span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <button type="button" class="btn btn-icon-sm" title="View Source Receipt"
+                                        data-action="view" data-id="1002">👁️</button>
+                                    <button type="button" class="btn btn-icon-sm" title="Edit Entry" data-action="edit"
+                                        data-id="1002">✏️</button>
+                                    <button type="button" class="btn btn-icon-sm btn-delete" title="Delete Entry"
+                                        data-action="delete" data-id="1002">🗑️</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Office Supplies -->
+                        <tr class="table-row verified-row" id="row-rec-1003">
+                            <td>
+                                <input type="checkbox" class="row-checkbox" aria-label="Select transaction 1003">
+                            </td>
+                            <td class="font-mono text-muted">#REC-1003</td>
+                            <td>06/10/2026</td>
+                            <td>
+                                <div class="merchant-cell">
+                                    <span class="merchant-name">Staples Office World</span>
+                                    <span class="merchant-sub">Stationery</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-category category-supplies">📦 Supplies</span>
+                            </td>
+                            <td class="text-right font-mono">₹110.00</td>
+                            <td class="text-right font-mono font-bold">₹1,240.00</td>
+                            <td>
+                                <span class="badge badge-status badge-verified">
+                                    <span class="status-indicator-dot"></span> Clean
+                                </span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <button type="button" class="btn btn-icon-sm" title="View Source Receipt"
+                                        data-action="view" data-id="1003">👁️</button>
+                                    <button type="button" class="btn btn-icon-sm" title="Edit Entry" data-action="edit"
+                                        data-id="1003">✏️</button>
+                                    <button type="button" class="btn btn-icon-sm btn-delete" title="Delete Entry"
+                                        data-action="delete" data-id="1003">🗑️</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4: Duplicate Flagged -->
+                        <tr class="table-row row-warning" id="row-rec-1004">
+                            <td>
+                                <input type="checkbox" class="row-checkbox" aria-label="Select transaction 1004">
+                            </td>
+                            <td class="font-mono text-muted">#REC-1004</td>
+                            <td>06/10/2026</td>
+                            <td>
+                                <div class="merchant-cell">
+                                    <span class="merchant-name">Cafe Coffee Day</span>
+                                    <span class="merchant-sub">Beverages</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-category category-food">🍔 Food</span>
+                            </td>
+                            <td class="text-right font-mono">₹22.50</td>
+                            <td class="text-right font-mono font-bold">₹450.00</td>
+                            <td>
+                                <span class="badge badge-status badge-warning">
+                                    <span class="status-indicator-dot"></span> Duplicate #1082
+                                </span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <button type="button" class="btn btn-icon-sm" title="View Source Receipt"
+                                        data-action="view" data-id="1004">👁️</button>
+                                    <button type="button" class="btn btn-icon-sm" title="Edit Entry" data-action="edit"
+                                        data-id="1004">✏️</button>
+                                    <button type="button" class="btn btn-icon-sm btn-delete" title="Delete Entry"
+                                        data-action="delete" data-id="1004">🗑️</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 5: Anomaly Spike Flagged -->
+                        <tr class="table-row row-danger" id="row-rec-1005">
+                            <td>
+                                <input type="checkbox" class="row-checkbox" aria-label="Select transaction 1005">
+                            </td>
+                            <td class="font-mono text-muted">#REC-1005</td>
+                            <td>05/10/2026</td>
+                            <td>
+                                <div class="merchant-cell">
+                                    <span class="merchant-name">Reliance Digital</span>
+                                    <span class="merchant-sub">Hardware Equipment</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-category category-tech">💻 Electronics</span>
+                            </td>
+                            <td class="text-right font-mono">₹3,420.00</td>
+                            <td class="text-right font-mono font-bold">₹28,500.00</td>
+                            <td>
+                                <span class="badge badge-status badge-danger">
+                                    <span class="status-indicator-dot"></span> Anomaly (+410%)
+                                </span>
+                            </td>
+                            <td>
+                                <div class="row-actions">
+                                    <button type="button" class="btn btn-icon-sm" title="View Source Receipt"
+                                        data-action="view" data-id="1005">👁️</button>
+                                    <button type="button" class="btn btn-icon-sm" title="Edit Entry" data-action="edit"
+                                        data-id="1005">✏️</button>
+                                    <button type="button" class="btn btn-icon-sm btn-delete" title="Delete Entry"
+                                        data-action="delete" data-id="1005">🗑️</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Table Footer / Pagination -->
+            <div class="table-pagination-footer">
+                <span class="pagination-info" id="paginationInfo">Showing 1 to 5 of 42 audited transactions</span>
+                <nav class="pagination-nav" aria-label="Table Pagination">
+                    <button type="button" class="pagination-btn disabled" disabled aria-label="Previous page">←
+                        Previous</button>
+                    <span class="pagination-page current">1</span>
+                    <button type="button" class="pagination-page">2</button>
+                    <button type="button" class="pagination-page">3</button>
+                    <button type="button" class="pagination-btn" aria-label="Next page">Next →</button>
+                </nav>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 6: HOW IT WORKS & ARCHITECTURE (README SPEC)
+           ====================================================================== -->
+        <section class="workflow-section" id="workflow" aria-labelledby="workflowHeading">
+            <div class="section-header text-center">
+                <span class="section-kicker">End-to-End Pipeline</span>
+                <h2 class="section-title" id="workflowHeading">How Receipt Guru AI Works</h2>
+                <p class="section-subtitle">
+                    A multi-stage vision and reasoning pipeline designed for accuracy and fraud deterrence.
+                </p>
+            </div>
+
+            <!-- 5-Step Process Pipeline -->
+            <div class="pipeline-grid">
+
+                <article class="pipeline-step-card" id="stepUpload">
+                    <div class="step-card-num">01</div>
+                    <div class="step-card-icon">📸</div>
+                    <h3 class="step-card-title">Upload Snapshot</h3>
+                    <p class="step-card-desc">
+                        User captures receipt via smartphone camera or drops an invoice image/PDF.
+                    </p>
+                </article>
+
+                <article class="pipeline-step-card" id="stepExtract">
+                    <div class="step-card-num">02</div>
+                    <div class="step-card-icon">🔍</div>
+                    <h3 class="step-card-title">AI & OCR Extract</h3>
+                    <p class="step-card-desc">
+                        Gemini Vision and Tesseract OCR parse raw pixel text into Merchant, Date, Tax, and Amount.
+                    </p>
+                </article>
+
+                <article class="pipeline-step-card" id="stepClassify">
+                    <div class="step-card-num">03</div>
+                    <div class="step-card-icon">🗂️</div>
+                    <h3 class="step-card-title">Auto-Classify</h3>
+                    <p class="step-card-desc">
+                        Expenses are dynamically sorted into categories like Food, Travel, Supplies, or Tech.
+                    </p>
+                </article>
+
+                <article class="pipeline-step-card" id="stepAnalyze">
+                    <div class="step-card-num">04</div>
+                    <div class="step-card-icon">🚨</div>
+                    <h3 class="step-card-title">Analyze & Audit</h3>
+                    <p class="step-card-desc">
+                        Heuristics cross-reference earlier entries to detect identical claims and unusual spikes.
+                    </p>
+                </article>
+
+                <article class="pipeline-step-card" id="stepVisualize">
+                    <div class="step-card-num">05</div>
+                    <div class="step-card-icon">📊</div>
+                    <h3 class="step-card-title">Visualize & Export</h3>
+                    <p class="step-card-desc">
+                        Instant visual financial dashboard with Chart.js charts and exportable ledger data.
+                    </p>
+                </article>
+
+            </div>
+
+            <!-- Architecture & Tech Stack Matrix -->
+            <div class="architecture-card" id="techStackCard">
+                <h3 class="arch-card-title">Technology Stack & System Integrations</h3>
+                <div class="tech-stack-chips">
+                    <div class="tech-chip">
+                        <span class="tech-chip-icon">⚛️</span>
+                        <div>
+                            <strong>React & JavaScript</strong>
+                            <small>Dynamic Client Application</small>
+                        </div>
+                    </div>
+                    <div class="tech-chip">
+                        <span class="tech-chip-icon">🤖</span>
+                        <div>
+                            <strong>Gemini Vision API</strong>
+                            <small>Multimodal Intelligence</small>
+                        </div>
+                    </div>
+                    <div class="tech-chip">
+                        <span class="tech-chip-icon">🔎</span>
+                        <div>
+                            <strong>Tesseract.js</strong>
+                            <small>On-Device OCR Parser</small>
+                        </div>
+                    </div>
+                    <div class="tech-chip">
+                        <span class="tech-chip-icon">📊</span>
+                        <div>
+                            <strong>Chart.js</strong>
+                            <small>Financial Visualizations</small>
+                        </div>
+                    </div>
+                    <div class="tech-chip">
+                        <span class="tech-chip-icon">🎨</span>
+                        <div>
+                            <strong>Tailwind & Modern CSS</strong>
+                            <small>Aesthetic Interface</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 7: HACKATHON & TEAM TECH TITANS
+           ====================================================================== -->
+        <section class="team-section" id="team" aria-labelledby="teamHeading">
+            <div class="section-header text-center">
+                <span class="section-kicker">CYRUS HACK-A-THON — CHH 2026</span>
+                <h2 class="section-title" id="teamHeading">Team TECH TITANS</h2>
+                <p class="section-subtitle">
+                    Developed for Track: <strong>FinTech & Vision Automation</strong> | Theme: <strong>Practical
+                        Impact</strong>
+                </p>
+            </div>
+
+            <div class="team-grid">
+
+                <!-- Member 1: Md Alfaz -->
+                <article class="team-member-card leader-card" id="memberAlfaz">
+                    <div class="member-avatar">
+                        <span class="avatar-letter">MA</span>
+                    </div>
+                    <div class="member-info">
+                        <span class="badge badge-primary">Team Leader</span>
+                        <h3 class="member-name">Md Alfaz</h3>
+                        <p class="member-role">Architecture & AI Vision Integration</p>
+                    </div>
+                </article>
+
+                <!-- Member 2: Sonakshi Upadhyay -->
+                <article class="team-member-card" id="memberSonakshi">
+                    <div class="member-avatar">
+                        <span class="avatar-letter">SU</span>
+                    </div>
+                    <div class="member-info">
+                        <span class="badge badge-neutral">Team Member</span>
+                        <h3 class="member-name">Sonakshi Upadhyay</h3>
+                        <p class="member-role">Frontend Engineering & UI/UX Design</p>
+                    </div>
+                </article>
+
+                <!-- Member 3: Divyanshu Kumar -->
+                <article class="team-member-card" id="memberDivyanshu">
+                    <div class="member-avatar">
+                        <span class="avatar-letter">DK</span>
+                    </div>
+                    <div class="member-info">
+                        <span class="badge badge-neutral">Team Member</span>
+                        <h3 class="member-name">Divyanshu Kumar</h3>
+                        <p class="member-role">Data Extraction & Heuristic Auditing</p>
+                    </div>
+                </article>
+
+                <!-- Member 4: Utkarsh Singh -->
+                <article class="team-member-card" id="memberUtkarsh">
+                    <div class="member-avatar">
+                        <span class="avatar-letter">US</span>
+                    </div>
+                    <div class="member-info">
+                        <span class="badge badge-neutral">Team Member</span>
+                        <h3 class="member-name">Utkarsh Singh</h3>
+                        <p class="member-role">Visualization & Anomaly Testing</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ======================================================================
+           SECTION 8: FUTURE SCOPE / ROADMAP
+           ====================================================================== -->
+        <section class="future-scope-section" id="futureScope" aria-labelledby="futureHeading">
+            <div class="section-header">
+                <div>
+                    <span class="section-kicker">Vision & Expansion</span>
+                    <h2 class="section-title" id="futureHeading">Future Roadmap</h2>
+                    <p class="section-subtitle">Extending Receipt Guru AI beyond hackathon prototyping.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <span class="roadmap-icon">🔗</span>
+                    <div class="roadmap-text">
+                        <h4>Accounting Integrations</h4>
+                        <p>Direct sync to QuickBooks, Tally Prime, and Xero APIs.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-icon">🌍</span>
+                    <div class="roadmap-text">
+                        <h4>Multi-Language OCR</h4>
+                        <p>Support for multilingual invoices, regional receipts, and varied currencies.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-icon">🔔</span>
+                    <div class="roadmap-text">
+                        <h4>Real-Time Budget Alerts</h4>
+                        <p>Instant push notifications when team or department caps are exceeded.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-icon">📱</span>
+                    <div class="roadmap-text">
+                        <h4>Native Mobile App</h4>
+                        <p>Instant camera scanning with on-device edge AI inference.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+       MODAL: RECEIPT IMAGE INSPECTION VIEWER
+       ========================================================================== -->
+    <dialog class="app-modal" id="receiptViewerModal" aria-labelledby="modalReceiptTitle">
+        <div class="modal-dialog-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalReceiptTitle">Source Receipt Snapshot</h3>
+                <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="Close dialog">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-receipt-preview">
+                    <!-- Text Receipt Preview Mock representation -->
+                    <div class="receipt-paper" id="modalReceiptPaper">
+                        <div class="receipt-paper-header">
+                            <h4 id="modalMerchantName">ABC SUPERMARKET</h4>
+                            <p id="modalReceiptDate">07/10/2026</p>
+                        </div>
+                        <div class="receipt-divider">--------------------------------</div>
+                        <div class="receipt-items-mock">
+                            <div class="receipt-mock-row">
+                                <span>Organic Apples 1kg</span>
+                                <span>₹220.00</span>
+                            </div>
+                            <div class="receipt-mock-row">
+                                <span>Whole Grain Bread</span>
+                                <span>₹65.00</span>
+                            </div>
+                            <div class="receipt-mock-row">
+                                <span>Greek Yogurt 400g</span>
+                                <span>₹180.00</span>
+                            </div>
+                            <div class="receipt-mock-row">
+                                <span>Pantry Groceries</span>
+                                <span>₹385.00</span>
+                            </div>
+                        </div>
+                        <div class="receipt-divider">--------------------------------</div>
+                        <div class="receipt-summary-mock">
+                            <div class="receipt-mock-row">
+                                <span>Subtotal:</span>
+                                <span>₹850.00</span>
+                            </div>
+                            <div class="receipt-mock-row">
+                                <span>Tax (GST 5%):</span>
+                                <span>₹42.50</span>
+                            </div>
+                            <div class="receipt-mock-row receipt-total-bold">
+                                <span>TOTAL:</span>
+                                <span>₹892.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-audit-info">
+                    <h4>Audit Verification Notes</h4>
+                    <ul>
+                        <li>OCR Confidence: <strong>99.2%</strong></li>
+                        <li>Extracted by: <strong>Gemini Vision API</strong></li>
+                        <li>Categorization: <strong>Food</strong></li>
+                        <li>Fraud Risk: <strong class="text-success">Low / Verified</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modalCloseActionBtn">Close</button>
+                <button type="button" class="btn btn-primary" id="modalDownloadReportBtn">Download Verified Audit
+                    PDF</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <footer class="app-footer" id="appFooter">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="brand-group">
+                    <span class="brand-icon">🧾</span>
+                    <span class="brand-name">Receipt Guru <span class="brand-ai">AI</span></span>
+                </div>
+                <p class="footer-tagline">
+                    Smart Receipt & Invoice Snapshot Auditor. Turning phone snapshots into trustworthy financial
+                    intelligence.
+                </p>
+                <p class="hackathon-credit">
+                    Built with ❤️ by <strong>Team TECH TITANS</strong> for <strong>CYRUS HACK-A-THON (CHH
+                        2026)</strong>.
+                </p>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#scanner">Receipt Scanner</a></li>
+                    <li><a href="#alerts">Anomaly Alerts</a></li>
+                    <li><a href="#transactions">Expense Ledger</a></li>
+                    <li><a href="#workflow">Architecture</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col specs-col">
+                <h4 class="footer-heading">Technologies</h4>
+                <ul class="footer-links">
+                    <li><span>Gemini Vision API</span></li>
+                    <li><span>Tesseract.js OCR</span></li>
+                    <li><span>Chart.js Visualization</span></li>
+                    <li><span>React & Modern CSS</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-col license-col">
+                <h4 class="footer-heading">Project Info</h4>
+                <p>License: <strong>MIT License</strong></p>
+                <p>Track: <strong>FinTech & Vision Automation</strong></p>
+                <p>Status: <strong>Hackathon Prototype Ready</strong></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 Receipt Guru AI. Developed by Team TECH TITANS (Md Alfaz, Sonakshi Upadhyay, Divyanshu Kumar,
+                Utkarsh Singh).</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
